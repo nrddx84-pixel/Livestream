@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#101827"><title>StreamLoop — 24/7 Live Dashboard</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header class="topbar"><div class="brand"><span class="logo">▶</span><div><strong>StreamLoop</strong><small>24/7 video streaming</small></div></div><span id="connection" class="pill muted">Checking server…</span></header>
+  <main class="wrap">
+    <section class="hero"><p class="eyebrow">YOUR STREAMING CONTROL ROOM</p><h1>Loop your video.<br><span>Go live.</span></h1><p class="sub">Upload a video, add your YouTube RTMP details, and run a continuous stream from your server.</p></section>
+    <section class="panel"><div class="section-head"><span class="step">1</span><div><h2>Upload video</h2><p>MP4 is recommended. Maximum file size: 2GB (server must have enough free disk space).</p></div></div>
+      <label class="dropzone" for="video"><span class="upload-icon">↑</span><strong id="fileTitle">Choose a video file</strong><span id="fileInfo">Tap here to select from your phone</span><input id="video" type="file" accept="video/*"></label>
+      <div class="progress-wrap hidden" id="progressWrap"><div class="progress-label"><span id="progressText">Uploading…</span><span id="progressPercent">0%</span></div><div class="track"><div id="progressBar"></div></div></div>
+      <button class="btn primary" id="uploadBtn">Upload Video</button><p class="hint" id="uploadMessage">Your video is sent to the backend server, not GitHub Pages.</p>
+    </section>
+    <section class="panel"><div class="section-head"><span class="step">2</span><div><h2>YouTube Live settings</h2><p>Find the server URL and stream key in YouTube Studio → Go Live.</p></div></div>
+      <label class="field">RTMP server URL<input id="rtmpUrl" type="url" value="rtmps://a.rtmps.youtube.com/live2" placeholder="rtmps://a.rtmps.youtube.com/live2" autocomplete="url"></label>
+      <label class="field">Stream key<div class="secret-row"><input id="streamKey" type="password" placeholder="Paste your stream key" autocomplete="off"><button class="btn secondary tiny" id="toggleKey" type="button">Show</button></div></label>
+      <label class="check"><input id="loop" type="checkbox" checked><span><strong>Loop video continuously</strong><small>FFmpeg repeats the uploaded video until you stop it.</small></span></label>
+      <label class="field">Backend API URL <input id="apiBase" type="url" placeholder="Same server by default, or https://your-backend.example.com"><small>Leave blank when this dashboard and API are hosted together.</small></label>
+      <div class="actions"><button class="btn primary" id="startBtn">▶ Start Live</button><button class="btn danger" id="stopBtn">■ Stop Live</button><button class="btn secondary" id="refreshBtn">↻ Refresh status</button></div>
+      <div class="statusbox"><span class="status-dot" id="statusDot"></span><div><strong id="statusTitle">Checking status…</strong><p id="statusText">Connect to your backend to see stream status.</p></div></div>
+      <p class="hint warning">Keep your stream key private. This dashboard sends it to your configured backend when you press Start Live.</p>
+    </section>
+    <section class="panel"><div class="section-head"><span class="step">3</span><div><h2>Uploaded videos</h2><p>Select the video you want to stream.</p></div></div><div id="videoList" class="video-list"><p class="empty">No videos loaded yet. Upload a video first.</p></div></section>
+    <footer>StreamLoop is an independent tool. YouTube may take a short time to show a stream. Keep the backend server running for 24/7 streaming.</footer>
+  </main><div id="toast" role="status" aria-live="polite"></div><script src="/app.js"></script>
+</body></html>

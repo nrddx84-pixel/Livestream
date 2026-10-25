@@ -1,0 +1,14 @@
+StreamLoop চালানোর সহজ ধাপ (বাংলা)
+
+১) ZIP ফাইল Extract করুন।
+২) Backend চালানোর জন্য Node.js 20+ এবং FFmpeg থাকা Linux server/VPS দরকার। শুধু GitHub Pages যথেষ্ট নয়।
+৩) .env.example কপি করে .env নাম দিন।
+৪) server folder-এ নয়, প্রজেক্টের মূল ফোল্ডারে চালান: npm install
+৫) তারপর: npm start
+৬) ব্রাউজারে http://SERVER-IP:8080 খুলুন। সার্ভারের firewall-এ প্রয়োজনীয় port খুলুন এবং production-এ HTTPS ব্যবহার করুন।
+৭) Upload Video চাপুন, ভিডিও বাছুন, upload শেষ হওয়া পর্যন্ত অপেক্ষা করুন।
+৮) YouTube Studio → Go Live থেকে RTMP server URL ও stream key নিন। key গোপন রাখুন।
+৯) ভিডিও নির্বাচন করে Start Live চাপুন। YouTube Studio-তে preview/status যাচাই করুন।
+১০) ২৪/৭ চালাতে server বন্ধ হওয়া যাবে না; hosting-এ long-running process এবং outbound RTMP অনুমোদিত হতে হবে।
+
+সতর্কতা: GitHub Pages-এ public/index.html, public/style.css, public/app.js হোস্ট করা যায়। কিন্তু backend আলাদা সার্ভারে চলবে। Stream key কাউকে দেবেন না। এই starter project-এ production authentication এখনো যোগ করা নেই, তাই সরাসরি public internet-এ unsecured অবস্থায় চালাবেন না।
